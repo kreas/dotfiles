@@ -1,0 +1,12 @@
+[user]
+  name = Tim Warren
+  email = kreas@protonmail.ch
+[alias]
+  aa = add -A
+  amend = commit -a --amend
+  l = !tig log
+  plog = log --graph --decorate --pretty=oneline --abbrev-commit
+  s = !tig status
+  submodules = submodule update --init --recursive
+  up = !git pull --rebase --prune $1 && git submodules
+  unstage = !git reset -- $1
