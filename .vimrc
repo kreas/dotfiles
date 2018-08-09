@@ -93,6 +93,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 filetype plugin indent on
