@@ -94,6 +94,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'janko-m/vim-test'
 Plugin 'kien/ctrlp.vim'
+Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'editorconfig/editorconfig-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -391,6 +394,11 @@ map <silent> <C-N> :set invnumber<cr>
 
 " Set Code folding for haml
 au BufNewFile,BufReadPost *.haml setl foldmethod=indent nofoldenable
+
+" Set tab for UltiSnips
+let UltiSnipsExpandTrigger="<tab>"
+let UltiSnipsJumpForwardTrigger="<c-b>"
+let UltiSnipsJumpBackwardTrigger="<c-z>"
 
 
 

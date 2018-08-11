@@ -4,6 +4,8 @@
 [alias]
   aa = add -A
   amend = commit -a --amend
+  c = commit
+  co = checkout
   l = !tig log
   plog = log --graph --decorate --pretty=oneline --abbrev-commit
   s = !tig status
