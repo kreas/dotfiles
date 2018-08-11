@@ -4,11 +4,19 @@
 [alias]
   aa = add -A
   amend = commit -a --amend
+  branch-name = !git rev-parse --abbrev-ref HEAD
   c = commit
+  cleanup = !git reset --hard && git clean -f
   co = checkout
   l = !tig log
-  plog = log --graph --decorate --pretty=oneline --abbrev-commit
+  ll = !git ls --numstat
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  new-feature = "!f(){ b=$1; !git checkout develop; git fetch origin develop; git rebase; git checkout -b "feature/$b" develop;};f"
+  push-feature = "!f(){ !git fetch origin develop; git pull origin develop --rebase; git push $(git branch-name);};f"
+  p = git pull
   s = !tig status
+  search = "grep -Iin"
+  set-upstream = !git branch --set-upstream-to=origin/$(git branch-name) $(git branch-name)
   submodules = submodule update --init --recursive
-  up = !git pull --rebase --prune $1 && git submodules
   unstage = !git reset -- $1
+  up = !git pull --rebase --prune $1 && git submodules
