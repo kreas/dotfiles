@@ -1,9 +1,9 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Tim Warren
 "       http://warren.be - tim@scribe.gs
 "
-" Version: 
+" Version:
 "       1.0 - 2018-08-12
 "
 " Sections:
@@ -62,6 +62,12 @@ set nocompatible
 " Enable line numbers by default
 set number
 
+" Highlight trailing whitespaces
+highlight link sensibleWhitespaceError Error
+autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
+
+" Remove unwanted whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
@@ -81,7 +87,7 @@ Plugin 'vim-erlang/vim-erlang-runtime'
 Plugin 'vim-erlang/vim-erlang-omnicomplete'
 Plugin 'vim-erlang/vim-erlang-compiler'
 
-" Elixir Support 
+" Elixir Support
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'avdgaag/vim-phoenix'
 Plugin 'mmorearty/elixir-ctags'
@@ -110,6 +116,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
 Plugin 'editorconfig/editorconfig-vim'
+Plugin 'jceb/vim-orgmode'
 
 call vundle#end()
 filetype plugin indent on
@@ -144,7 +151,7 @@ set whichwrap+=<,>,h,l
 " Ignore case when searching
 set ignorecase
 
-" When searching try to be smart about cases 
+" When searching try to be smart about cases
 set smartcase
 
 " Highlight search results
@@ -259,6 +266,9 @@ map k gk
 map <silent> <leader><cr> :noh<cr>
 map <silent> <leader>\ :nohls<cr>
 
+map <silent> <leader>\| :vsp<cr>
+map <silent> <leader>- :sp<cr>
+
 " Smart way to move between windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -289,7 +299,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -313,7 +323,7 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ Line:\ %l\ -\ Column:\ %c
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
