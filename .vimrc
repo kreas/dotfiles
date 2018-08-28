@@ -97,6 +97,10 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'jadercorrea/elixir_generator.vim'
 
+" JSX Support
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
 " Markdown / Writting
 Plugin 'reedes/vim-pencil'
 Plugin 'tpope/vim-markdown'
@@ -262,6 +266,14 @@ vnoremap <silent> # :call VisualSelection('b')<CR>
 map j gj
 map k gk
 
+" Move to the end/start of line similar to the terminal
+imap <C-e> <C-o>$
+imap <C-a> <C-o>^
+
+" Emulate Ctrl-k while in insert mode
+imap <C-k> <C-o>d$
+
+
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 map <silent> <leader>\ :nohls<cr>
@@ -333,11 +345,11 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ Line:\ %l\ -\ Column:\ %c
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" Move a line of text using Ctrl+[jk]
+nmap <C-j> mz:m+<cr>`z
+nmap <C-k> mz:m-2<cr>`z
+vmap <C-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <C-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
