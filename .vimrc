@@ -50,9 +50,6 @@ nmap <leader>w :w!<cr>
 " Fast close
 nmap <leader>q :q<cr>
 
-" Close all buffers
-nmap <leader>bd bufdo bd<cr>
-
 " Set NERDtree to show hidden files by default
 let NERDTreeShowHidden=1
 
@@ -77,9 +74,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Themes that doesn't suck
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'NLKNguyen/papercolor-theme'
-Plugin 'dracula/vim'
+Plugin 'flazz/vim-colorschemes'
 
 " Erlang Support
 Plugin 'vim-erlang/vim-erlang-tags'
@@ -98,8 +93,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'jadercorrea/elixir_generator.vim'
 
 " JSX Support
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'chemzqm/vim-jsx-improve'
 
 " Markdown / Writting
 Plugin 'reedes/vim-pencil'
@@ -115,7 +109,6 @@ Plugin 'gregsexton/gitv'
 " Tools
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
-Plugin 'janko-m/vim-test'
 Plugin 'kien/ctrlp.vim'
 Plugin 'honza/vim-snippets'
 Plugin 'SirVer/ultisnips'
@@ -287,11 +280,17 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" Swap buffers
-map <leader>bd :b#<cr>
+" Close all buffers
+nmap <leader>bd bufdo bd<cr>
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+" Swap buffers
+map <leader>3 :b#<cr>
+
+" Previous buffer
+map <leader>p :bp<cr>
+"
+" Next buffer
+map <leader>n :bn<cr>
 
 " Close all the buffers
 map <leader>ba :1,1000 bd!<cr>
@@ -384,21 +383,8 @@ map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
-" Do :help cope if you are unsure what cope is. It's super useful!
-"
-" When you search with vimgrep, display your results in cope by doing:
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search results do:
-"   <leader>p
-"
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -425,11 +411,15 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Toggle NERDTree with ctrl+d
+" Toggle NERDTree with leader+d
 map <leader>d :NERDTreeToggle<cr>
 
-" Ctrl p remap
+" Ctrl-p remap
 map <leader><space> :CtrlP<cr>
+
+" While we're on the topic of Ctrl-p ignore the things
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 
 " Toggle Line Numbers
 map <silent> <c-n> :set invnumber<cr>
@@ -441,6 +431,10 @@ au BufNewFile,BufReadPost *.haml setl foldmethod=indent nofoldenable
 let UltiSnipsExpandTrigger="<tab>"
 let UltiSnipsJumpForwardTrigger="<c-b>"
 let UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Allow for project specific rc files
+set exrc
+set secure
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
