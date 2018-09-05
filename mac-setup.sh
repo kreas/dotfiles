@@ -5,7 +5,7 @@
 # +------------------+ #
 
 function install_cli() {
-  if brew ls --versions $1 > /dev/null
+  if brew ls --versions $1 &> /dev/null
   then
     echo "Package $1 is already installed"
   else
@@ -47,6 +47,7 @@ fi
 echo "Installing CLI tools"
 
 install_cli git
+install_cli git-extras
 install_cli asdf
 install_cli bat
 install_cli htop
@@ -91,11 +92,12 @@ install_app visual-studio-code
 
 echo "Linking configs"
 
-ln -s $(PWD)/.zshrc $HOME/.zshrc
-ln -s $(PWD)/.zsh $HOME/.zsh
+ln -s $(PWD)/.aliases $HOME/.aliases
 ln -s $(PWD)/.tmux.config $HOME/.tmux.config
-ln -s $(PWD)/.vimrc $HOME/.vimrc
 ln -s $(PWD)/.vim $HOME/.vim
+ln -s $(PWD)/.vimrc $HOME/.vimrc
+ln -s $(PWD)/.zsh $HOME/.zsh
+ln -s $(PWD)/.zshrc $HOME/.zshrc
 
 # +----------------+ #
 # | Setup SSH Keys | #

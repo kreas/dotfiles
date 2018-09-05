@@ -10,6 +10,7 @@ ZSH_THEME="robbyrussell"
 
 source $ZSH/oh-my-zsh.sh
 . $HOME/.zsh/configs/paths.zsh
+. $HOME/.aliases
 
 
 # +---------+
