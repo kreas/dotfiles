@@ -24,4 +24,5 @@ plugins=(
   encode64
 )
 
-
+. /usr/local/opt/asdf/asdf.sh
+# . $HOME/.asdf/completions/asdf.bash

@@ -95,6 +95,12 @@ Plugin 'jadercorrea/elixir_generator.vim'
 " JSX Support
 Plugin 'chemzqm/vim-jsx-improve'
 
+" Kotlin Support
+Plugin 'udalov/kotlin-vim'
+
+" Ruby Support
+Plugin 'vim-ruby/vim-ruby'
+
 " Markdown / Writting
 Plugin 'reedes/vim-pencil'
 Plugin 'tpope/vim-markdown'
